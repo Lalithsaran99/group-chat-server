@@ -13,7 +13,7 @@ export class AuthService {
     async validateToken(token: string): Promise<User | null> {
         try {
             // decode the token and extract the user id
-            const decoded = this.jwtService.verify(token, { secret: 'secret_key' });
+            const decoded = await this.jwtService.verify(token, { secret: 'secret_key' });
             const userId = decoded['sub'];
 
             // find the user by id
